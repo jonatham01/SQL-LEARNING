@@ -26,6 +26,8 @@ CREATE TABLE "componentes" (
     id BIGSERIAL NOT NULL,
     ide INTEGER NOT NULL,
     pagina_id BIGINT NOT NULL,
+    posicion smallint NOT NULL,
+
     titulo VARCHAR(250),
     paddingtop smallint,
     paddingbottom smallint,
@@ -38,6 +40,7 @@ CREATE TABLE "componentes" (
     backgroundcolor VARCHAR(100),
     display VARCHAR(8),
     justifycontent VARCHAR(7),
+   
     PRIMARY KEY("id"),
     CONSTRAINT "componentes_paginas_fk"
     FOREIGN KEY("pagina_id")
@@ -49,6 +52,8 @@ CREATE TABLE "contenedores"(
     id BIGSERIAL NOT NULL ,
     ide INTEGER NOT NULL,
     componente_id BIGINT NOT NULL,
+    pagina_id BIGINT NOT NULL,
+    posicion smallint NOT NULL,
     
     paddingtop smallint,
     paddingbottom smallint,
@@ -68,6 +73,8 @@ CREATE TABLE "subcomponentes"(
     id BIGSERIAL NOT NULL,
     ide INTEGER NOT NULL,
     componente_id BIGINT NOT NULL,
+    pagina_id BIGINT NOT NULL,
+    posicion smallint NOT NULL,
     display VARCHAR(8),
     gridtemplatecolumns VARCHAR(40),
     gap VARCHAR(7),
@@ -81,6 +88,8 @@ CREATE TABLE "cajas"(
     id BIGSERIAL NOT NULL,
     ide INTEGER NOT NULL,
     componente_id BIGINT NOT NULL,
+    pagina_id BIGINT NOT NULL,
+    posicion smallint NOT NULL,
    -- backgroundcolor VARCHAR(100),
     display VARCHAR(8),
     flexdirection VARCHAR(6),
@@ -100,6 +109,8 @@ CREATE TABLE "elementos"(
     id BIGSERIAL NOT NULL,
     ide INTEGER NOT NULL,
     componente_id BIGINT NOT NULL,
+    pagina_id BIGINT NOT NULL,
+    posicion smallint NOT NULL,
     tag VARCHAR(7) NOT NULL, 
     content TEXT NOT NULL, ---text deprecado
     paddingtop SMALLINT ,
@@ -120,6 +131,8 @@ CREATE TABLE "elementos"(
     fontfamily  VARCHAR(20),
     fontweight smallint ,
     lineheight smallint ,
+    backgroundcolor VARCHAR(20),
+    align VARCHAR(8),
     PRIMARY KEY("id"),
     CONSTRAINT "elementos_cajas_fk"
     FOREIGN KEY("componente_id")
