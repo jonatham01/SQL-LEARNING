@@ -2,8 +2,8 @@
 CREATE TABLE "publicaciones"(
     id BIGSERIAL NOT NULL,
     negocio BIGINT NOT NULL,
-    nombre VARCHAR(100) NOT NULL,
-    titulo VARCHAR(200),
+    descrpcion VARCHAR(200) NOT NULL,
+    titulo VARCHAR(100),
     estado VARCHAR(10),
     publicacion TEXT,
     fecha_creacion TIMESTAMP NOT NULL,
@@ -15,6 +15,21 @@ CREATE TABLE "publicaciones"(
     REFERENCES NEGOCIOS("id")
     ON DELETE CASCADE
     ON UPDATE CASCADE
+);
+
+CREATE TABLE "publicaciones_txt"(
+    id BIGSERIAL NOT NULL,
+    publicacion BIGINT  NOT NULL,
+    contenido TEXT,
+    tipo VARCHAR(3),
+
+    PRIMARY KEY("id"),
+    CONSTRAINT "publicaciones_fk"
+    FOREIGN KEY("publicacion")
+    REFERENCES PUBLICACIONES("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+
 );
 
 
