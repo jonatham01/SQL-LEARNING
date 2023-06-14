@@ -19,8 +19,8 @@ CREATE TABLE "publicaciones"(
     CONSTRAINT "publicaciones_usuarios_fk"
     FOREIGN KEY("usuario_id")
     REFERENCES Usuarios("id")
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
 );
 
 CREATE TABLE "publicaciones_txt"(
