@@ -38,6 +38,21 @@ CREATE TABLE "publicaciones_txt"(
 
 );
 
+CREATE TABLE "blog"(
+    id BIGSERIAL NOT NULL,
+    negocio BIGINT NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(200) NOT NULL,
+    fecha_creacion TIMESTAMP NOT NULL,
+    actualizacion TIMESTAMP NOT NULL,
+    PRIMARY KEY("id"),
+    CONSTRAINT "blog_negocios_fk"
+    FOREIGN KEY("negocio")
+    REFERENCES NEGOCIOS("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+);
+
 
 CREATE TABLE "pub_page"(
     id_post BIGINT NOT NULL,
