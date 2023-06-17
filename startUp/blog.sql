@@ -50,8 +50,49 @@ CREATE TABLE "blog"(
     FOREIGN KEY("negocio")
     REFERENCES NEGOCIOS("id")
     ON DELETE CASCADE
-    ON UPDATE CASCADE,
+    ON UPDATE CASCADE
 );
+
+CREATE TABLE "categorias_blog"(
+    id BIGSERIAL NOT NULL,
+    negocio BIGINT NOT NULL,
+    blog BIGINT NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(200) NOT NULL,
+    imagen TEXT NOT NULL,
+    PRIMARY KEY("id"),
+
+    CONSTRAINT "categorias_negocios_fk"
+    FOREIGN KEY("negocio")
+    REFERENCES NEGOCIOS("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+    CONSTRAINT "categorias_blog_fk"
+    FOREIGN KEY("blog")
+    REFERENCES BLOG("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE "pub_ctg"(
+    id_publicacion BIGINT NOT NULL,
+    id_categoria BIGINT NOT NULL,
+    
+    PRIMARY KEY("id_publicacion","id_categoria"),
+    CONSTRAINT "pubctg_publicacion_fk"
+    FOREIGN KEY("id_publicacion")
+    REFERENCES PUBLICACIONES("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+    CONSTRAINT "pubctg_categoria_fk"
+    FOREIGN KEY("id_categoria")
+    REFERENCES CATEGORIAS_BLOG("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
 
 
 CREATE TABLE "pub_page"(
