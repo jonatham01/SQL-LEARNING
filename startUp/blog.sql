@@ -2,6 +2,7 @@
 CREATE TABLE "publicaciones"(
     id BIGSERIAL NOT NULL,
     negocio BIGINT NOT NULL,
+    blog BIGINT NOT NULL,
     descripcion VARCHAR(200) NOT NULL,
     titulo VARCHAR(100),
     estado VARCHAR(10),
@@ -13,6 +14,12 @@ CREATE TABLE "publicaciones"(
     CONSTRAINT "publicaciones_negocios_fk"
     FOREIGN KEY("negocio")
     REFERENCES NEGOCIOS("id")
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+    CONSTRAINT "publicaciones_blogs_fk"
+    FOREIGN KEY("blog")
+    REFERENCES BLOG("id")
     ON DELETE CASCADE
     ON UPDATE CASCADE,
 
